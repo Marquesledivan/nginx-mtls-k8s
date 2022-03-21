@@ -1,0 +1,14 @@
+[ req ]
+default_bits       = 4096
+distinguished_name = req_distinguished_name
+req_extensions     = req_ext
+[ req_distinguished_name ]
+countryName             = "BR"
+stateOrProvinceName     = "SP"
+localityName            = "Sao Paulo"
+organizationName        = "Quanto"
+commonName              = "localhost"
+[ req_ext ]
+subjectAltName = @alt_names
+[alt_names]
+DNS.1   = localhost

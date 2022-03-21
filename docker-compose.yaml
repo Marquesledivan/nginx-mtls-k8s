@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+  node_basic:
+    image: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx-server/index.html:/usr/share/nginx/html/index.html
+  
+  nginx:
+    image: nginx
+    ports:
+      - "443:443"
+      - "80:80"
+    volumes:
+      - ./nginx-server/proxy.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx-server/nginx.conf:/etc/nginx/nginx.conf
+      - ./certs/server.crt:/etc/ssl/server.crt
+      - ./certs/server.key:/etc/ssl/server.key
+      - ./certs/ca.crt:/etc/nginx/client_certs/ca.crt
+
+  nginx_basic:
+    image: nginx
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./nginx-client/proxy.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx-client/nginx.conf:/etc/nginx/nginx.conf
+      - ./certs/client.crt:/etc/ssl/client.crt
+      - ./certs/client.key:/etc/ssl/client.key
+      - ./certs/ca.crt:/etc/nginx/client_certs/ca.crt
+
+
