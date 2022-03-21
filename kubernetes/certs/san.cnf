@@ -6,7 +6,7 @@ req_extensions     = req_ext
 countryName             = "BR"
 stateOrProvinceName     = "SP"
 localityName            = "Sao Paulo"
-organizationName        = "Quanto"
+organizationName        = "localhost"
 commonName              = "localhost"
 [ req_ext ]
 subjectAltName = @alt_names
